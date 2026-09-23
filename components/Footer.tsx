@@ -15,17 +15,17 @@ const navLinks = [
 const socials = [
   {
     label: "Twitter / X",
-    href: "https://twitter.com/sosjournal",
+    href: "https://x.com/SoJournalo",
     icon: Twitter,
   },
   {
     label: "Telegram",
-    href: "https://t.me/sosjournal",
+    href: "https://t.me/Sojournalo",
     icon: Send,
   },
   {
     label: "Email",
-    href: "mailto:contact@sosjournal.com",
+    href: "mailto:sojournalo@gmail.com",
     icon: Mail,
   },
 ];
@@ -45,7 +45,7 @@ export default function Footer() {
                 <span className="text-black font-bold text-xs font-display">SJ</span>
               </div>
               <span className="font-display font-bold text-lg text-white group-hover:text-[#E2C97E] transition-colors">
-                SO&apos;s Journal
+                SoJournalo
               </span>
             </a>
             <p className="text-white/55 text-sm leading-relaxed max-w-xs mb-6">
@@ -99,14 +99,14 @@ export default function Footer() {
             </h4>
             <div className="space-y-3">
               <a
-                href="mailto:contact@sosjournal.com"
+                href="mailto:sojournalo@gmail.com"
                 className="flex items-center gap-2.5 text-white/55 hover:text-[#C9A84C] text-sm transition-colors group"
               >
                 <Mail size={14} className="text-[#C9A84C]/60 group-hover:text-[#C9A84C]" />
-                contact@sosjournal.com
+                sojournalo@gmail.com
               </a>
               <a
-                href="https://t.me/sosjournal"
+                href="https://t.me/Sojournalo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 text-white/55 hover:text-[#C9A84C] text-sm transition-colors group"
@@ -115,7 +115,7 @@ export default function Footer() {
                 Telegram
               </a>
               <a
-                href="https://twitter.com/sosjournal"
+                href="https://x.com/SoJournalo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 text-white/55 hover:text-[#C9A84C] text-sm transition-colors group"
@@ -129,7 +129,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/35 text-xs">
-            © {new Date().getFullYear()} SO&apos;s Journal. All rights reserved.
+            © {new Date().getFullYear()} SoJournalo. All rights reserved.
           </p>
           <div className="flex items-center gap-1">
             <div className="w-1 h-1 rounded-full bg-[#C9A84C]/60 animate-pulse" />

@@ -49,7 +49,7 @@ export default function Navbar() {
                 <span className="text-black font-bold text-xs font-display">SJ</span>
               </div>
               <span className="font-display font-bold text-lg tracking-tight text-white group-hover:text-[#E2C97E] transition-colors">
-                SO&apos;s Journal
+                SoJournalo
               </span>
             </a>
 

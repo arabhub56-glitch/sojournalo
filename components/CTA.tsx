@@ -97,7 +97,7 @@ export default function CTA() {
             className="group relative px-10 py-5 rounded-2xl bg-gradient-to-r from-[#C9A84C] via-[#E2C97E] to-[#C9A84C] text-black font-bold text-lg shadow-[0_0_40px_rgba(201,168,76,0.3)] transition-all duration-300 overflow-hidden"
           >
             <span className="relative z-10 flex items-center gap-2">
-              Start Building With SO&apos;s Journal
+              Start Building With SoJournalo
               <ArrowRight
                 size={20}
                 className="group-hover:translate-x-1 transition-transform duration-200"

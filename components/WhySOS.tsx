@@ -150,7 +150,7 @@ export default function WhySOS() {
         <div className="text-center mb-16">
           <Reveal>
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold block mb-4">
-              Why SO&apos;s Journal
+              Why SoJournalo
             </span>
           </Reveal>
           <Reveal delay={0.1}>

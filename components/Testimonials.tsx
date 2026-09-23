@@ -11,7 +11,7 @@ const testimonials = [
     company: "DeFi Protocol",
     avatar: "KR",
     avatarColor: "from-[#C9A84C] to-[#A07830]",
-    text: "SO's Journal transformed how we engage with the Arabic-speaking world. Within three months, our Telegram went from 200 members to over 8,000 — with genuine, active participation. Their team speaks the language and lives the culture. There's no substitute for that.",
+    text: "SoJournalo transformed how we engage with the Arabic-speaking world. Within three months, our Telegram went from 200 members to over 8,000 — with genuine, active participation. Their team speaks the language and lives the culture. There's no substitute for that.",
     stars: 5,
   },
   {
@@ -20,7 +20,7 @@ const testimonials = [
     company: "Layer-1 Blockchain",
     avatar: "FA",
     avatarColor: "from-[#7C3AED] to-[#5B21B6]",
-    text: "We tried three other agencies before SO's Journal. None of them understood that the MENA audience isn't just a translation problem — it's a cultural intelligence problem. SO's Journal solved it completely. Our Arabic community is now our most engaged globally.",
+    text: "We tried three other agencies before SoJournalo. None of them understood that the MENA audience isn't just a translation problem — it's a cultural intelligence problem. SoJournalo solved it completely. Our Arabic community is now our most engaged globally.",
     stars: 5,
   },
   {
@@ -29,7 +29,7 @@ const testimonials = [
     company: "Web3 Gaming Studio",
     avatar: "OB",
     avatarColor: "from-[#C9A84C] to-[#7C3AED]",
-    text: "The quality of content SO's Journal produces in Arabic is genuinely world-class. It doesn't feel translated — it feels written by someone who grew up in the community. Our AMAs in Arabic became major events that the wider ecosystem started paying attention to.",
+    text: "The quality of content SoJournalo produces in Arabic is genuinely world-class. It doesn't feel translated — it feels written by someone who grew up in the community. Our AMAs in Arabic became major events that the wider ecosystem started paying attention to.",
     stars: 5,
   },
   {
@@ -38,7 +38,7 @@ const testimonials = [
     company: "NFT Marketplace",
     avatar: "YK",
     avatarColor: "from-[#A78BFA] to-[#7C3AED]",
-    text: "SO's Journal doesn't just manage our community — they protect it. The moderation standards are exceptional, the response quality is premium, and the growth has been consistent and organic. This is what true MENA expansion looks like.",
+    text: "SoJournalo doesn't just manage our community — they protect it. The moderation standards are exceptional, the response quality is premium, and the growth has been consistent and organic. This is what true MENA expansion looks like.",
     stars: 5,
   },
   {
@@ -47,7 +47,7 @@ const testimonials = [
     company: "DeFi Yield Protocol",
     avatar: "AA",
     avatarColor: "from-[#C9A84C] to-[#E2C97E]",
-    text: "I was skeptical about investing heavily in Arabic community building — until SO's Journal showed me the numbers. The MENA audience they cultivated for us has some of the highest holder retention metrics in our entire ecosystem. The ROI speaks for itself.",
+    text: "I was skeptical about investing heavily in Arabic community building — until SoJournalo showed me the numbers. The MENA audience they cultivated for us has some of the highest holder retention metrics in our entire ecosystem. The ROI speaks for itself.",
     stars: 5,
   },
   {
@@ -56,7 +56,7 @@ const testimonials = [
     company: "Cross-Chain Bridge",
     avatar: "NT",
     avatarColor: "from-[#7C3AED] to-[#C9A84C]",
-    text: "Partnering with SO's Journal was one of our best decisions. They don't just post content — they craft narratives that resonate deeply with Arabic Web3 audiences. Our brand recognition across MENA grew dramatically, and the community trust they built is priceless.",
+    text: "Partnering with SoJournalo was one of our best decisions. They don't just post content — they craft narratives that resonate deeply with Arabic Web3 audiences. Our brand recognition across MENA grew dramatically, and the community trust they built is priceless.",
     stars: 5,
   },
 ];
@@ -102,7 +102,7 @@ export default function Testimonials() {
             className="text-white/65 text-lg max-w-xl mx-auto leading-relaxed"
           >
             Founders, community leads, and ecosystem teams who've experienced
-            the SO&apos;s Journal difference firsthand.
+            the SoJournalo difference firsthand.
           </motion.p>
         </div>
 

@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 import { Mail, Send, Twitter, ArrowRight, CheckCircle2 } from "lucide-react";
 import Reveal from "./ui/Reveal";
 
-const CONTACT_EMAIL = "contact@sosjournal.com";
+const CONTACT_EMAIL = "sojournalo@gmail.com";
 
 const channels = [
   {
@@ -16,14 +16,14 @@ const channels = [
   {
     icon: Send,
     label: "Telegram",
-    value: "@sosjournal",
-    href: "https://t.me/sosjournal",
+    value: "@Sojournalo",
+    href: "https://t.me/Sojournalo",
   },
   {
     icon: Twitter,
     label: "Twitter / X",
-    value: "@sosjournal",
-    href: "https://twitter.com/sosjournal",
+    value: "@SoJournalo",
+    href: "https://x.com/SoJournalo",
   },
 ];
 

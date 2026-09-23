@@ -149,7 +149,7 @@ export default function Hero() {
           variants={fadeUp}
           className="text-white/70 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10"
         >
-          SO&apos;s Journal helps Web3 brands expand across the{" "}
+          SoJournalo helps Web3 brands expand across the{" "}
           <span className="text-white font-medium">MENA region</span> through localized
           marketing, community growth, strategic content, and{" "}
           <span className="text-white font-medium">culturally-native communication.</span>
