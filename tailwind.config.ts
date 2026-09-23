@@ -19,10 +19,11 @@ const config: Config = {
           soft: "#A78BFA",
         },
         charcoal: {
-          DEFAULT: "#0D0D0D",
-          soft: "#141414",
-          mid: "#1A1A1A",
-          border: "#242424",
+          DEFAULT: "#0B0B0D",
+          soft: "#141416",
+          mid: "#1A1A1D",
+          raised: "#1F1F23",
+          border: "#26262A",
         },
       },
       fontFamily: {
@@ -32,13 +33,17 @@ const config: Config = {
       backgroundImage: {
         "gold-gradient": "linear-gradient(135deg, #C9A84C 0%, #E2C97E 50%, #A07830 100%)",
         "violet-gradient": "linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%)",
-        "dark-gradient": "linear-gradient(180deg, #0D0D0D 0%, #141414 100%)",
+        "dark-gradient": "linear-gradient(180deg, #0B0B0D 0%, #141416 100%)",
+      },
+      maxWidth: {
+        "8xl": "90rem",
       },
       animation: {
-        "float": "float 6s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "glow": "glow 3s ease-in-out infinite",
+        glow: "glow 3s ease-in-out infinite",
         "spin-slow": "spin 20s linear infinite",
+        marquee: "marquee 28s linear infinite",
       },
       keyframes: {
         float: {
@@ -48,6 +53,10 @@ const config: Config = {
         glow: {
           "0%, 100%": { opacity: "0.5" },
           "50%": { opacity: "1" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
       backdropBlur: {

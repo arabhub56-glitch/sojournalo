@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Users,
   Twitter,
@@ -14,135 +14,115 @@ import {
   Mic,
   Heart,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import Reveal from "./ui/Reveal";
 
-const services = [
+type Service = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
+
+const categories: { label: string; services: Service[] }[] = [
   {
-    icon: Users,
-    title: "Arabic Community Management",
-    description:
-      "Full-time, native Arabic community management that builds genuine trust, fosters engagement, and cultivates loyal ecosystem members across all channels.",
-    accent: "gold",
+    label: "Community & Growth",
+    services: [
+      {
+        icon: Users,
+        title: "Arabic Community Management",
+        description:
+          "Full-time, native Arabic community management that builds genuine trust, fosters engagement, and cultivates loyal ecosystem members across all channels.",
+      },
+      {
+        icon: MessageCircle,
+        title: "Telegram Moderation & Support",
+        description:
+          "Professional Telegram community moderation and 24/7 member support in Arabic, ensuring safety, engagement, and a premium community experience.",
+      },
+      {
+        icon: Rocket,
+        title: "Campaigns & Community Activations",
+        description:
+          "High-impact community campaigns, giveaways, and activations designed to drive rapid growth, engagement, and virality within Arabic Web3 circles.",
+      },
+      {
+        icon: Heart,
+        title: "Community Retention Strategy",
+        description:
+          "Long-term retention frameworks that keep Arabic community members engaged, informed, and committed — turning holders into passionate advocates.",
+      },
+      {
+        icon: Mic,
+        title: "AMA & Educational Events",
+        description:
+          "Professionally hosted AMA sessions and educational events in Arabic — building credibility, answering community questions, and driving adoption.",
+      },
+    ],
   },
   {
-    icon: Twitter,
-    title: "Twitter/X Growth Strategy",
-    description:
-      "Data-driven Twitter/X growth tailored to the Arabic-speaking Web3 audience — from content calendars to engagement tactics that amplify reach.",
-    accent: "violet",
+    label: "Content & Voice",
+    services: [
+      {
+        icon: Twitter,
+        title: "Twitter/X Growth Strategy",
+        description:
+          "Data-driven Twitter/X growth tailored to the Arabic-speaking Web3 audience — from content calendars to engagement tactics that amplify reach.",
+      },
+      {
+        icon: FileText,
+        title: "Arabic Content Creation",
+        description:
+          "Premium Web3 content written in native Arabic — threads, announcements, educational posts, and narratives that resonate deeply with MENA audiences.",
+      },
+      {
+        icon: Globe,
+        title: "Localization & Translation",
+        description:
+          "Expert Arabic localization of whitepapers, websites, and marketing materials that preserves intent, tone, and cultural nuance — not just words.",
+      },
+    ],
   },
   {
-    icon: MessageCircle,
-    title: "Telegram Moderation & Support",
-    description:
-      "Professional Telegram community moderation and 24/7 member support in Arabic, ensuring safety, engagement, and a premium community experience.",
-    accent: "gold",
-  },
-  {
-    icon: FileText,
-    title: "Arabic Content Creation",
-    description:
-      "Premium Web3 content written in native Arabic — threads, announcements, educational posts, and narratives that resonate deeply with MENA audiences.",
-    accent: "violet",
-  },
-  {
-    icon: Globe,
-    title: "Localization & Translation",
-    description:
-      "Expert Arabic localization of whitepapers, websites, and marketing materials that preserves intent, tone, and cultural nuance — not just words.",
-    accent: "gold",
-  },
-  {
-    icon: Zap,
-    title: "Web3 Brand Positioning",
-    description:
-      "Strategic brand positioning for Web3 projects entering the MENA market — identity, narrative, and messaging crafted for Arabic-speaking communities.",
-    accent: "violet",
-  },
-  {
-    icon: TrendingUp,
-    title: "MENA Market Expansion",
-    description:
-      "End-to-end market entry strategy for the Middle East and North Africa — from research and positioning to community seeding and growth.",
-    accent: "gold",
-  },
-  {
-    icon: Rocket,
-    title: "Campaigns & Community Activations",
-    description:
-      "High-impact community campaigns, giveaways, and activations designed to drive rapid growth, engagement, and virality within Arabic Web3 circles.",
-    accent: "violet",
-  },
-  {
-    icon: Mic,
-    title: "AMA & Educational Events",
-    description:
-      "Professionally hosted AMA sessions and educational events in Arabic — building credibility, answering community questions, and driving adoption.",
-    accent: "gold",
-  },
-  {
-    icon: Heart,
-    title: "Community Retention Strategy",
-    description:
-      "Long-term retention frameworks that keep Arabic community members engaged, informed, and committed — turning holders into passionate advocates.",
-    accent: "violet",
+    label: "Strategy & Positioning",
+    services: [
+      {
+        icon: Zap,
+        title: "Web3 Brand Positioning",
+        description:
+          "Strategic brand positioning for Web3 projects entering the MENA market — identity, narrative, and messaging crafted for Arabic-speaking communities.",
+      },
+      {
+        icon: TrendingUp,
+        title: "MENA Market Expansion",
+        description:
+          "End-to-end market entry strategy for the Middle East and North Africa — from research and positioning to community seeding and growth.",
+      },
+    ],
   },
 ];
 
-function ServiceCard({
-  service,
-  index,
-}: {
-  service: (typeof services)[0];
-  index: number;
-}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+function ServiceCard({ service, index }: { service: Service; index: number }) {
   const Icon = service.icon;
-  const isGold = service.accent === "gold";
 
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: (index % 5) * 0.08, ease: "easeOut" }}
-      whileHover={{ y: -6, scale: 1.02 }}
-      className="relative rounded-2xl p-6 bg-[#141414] border border-white/5 overflow-hidden group cursor-default transition-all duration-300 hover:border-white/10 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -12 }}
+      transition={{ duration: 0.4, delay: index * 0.05, ease: "easeOut" }}
+      className="relative rounded-2xl p-6 bg-[#141416] border border-white/5 overflow-hidden group transition-all duration-300 hover:border-[#C9A84C]/25 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
     >
-      {/* Hover glow */}
-      <div
-        className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl ${
-          isGold
-            ? "bg-gradient-to-br from-[#C9A84C]/8 to-transparent"
-            : "bg-gradient-to-br from-[#7C3AED]/8 to-transparent"
-        }`}
-      />
-      {/* Corner accent */}
-      <div
-        className={`absolute top-0 right-0 w-24 h-24 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl ${
-          isGold ? "bg-[#C9A84C]/10" : "bg-[#7C3AED]/10"
-        }`}
-      />
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl bg-gradient-to-br from-[#C9A84C]/8 to-transparent" />
+      <div className="absolute top-0 right-0 w-24 h-24 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl bg-[#C9A84C]/10" />
 
       <div className="relative z-10">
-        {/* Icon */}
-        <div
-          className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 ${
-            isGold
-              ? "bg-[#C9A84C]/10 group-hover:bg-[#C9A84C]/20 group-hover:shadow-[0_0_20px_rgba(201,168,76,0.2)]"
-              : "bg-[#7C3AED]/10 group-hover:bg-[#7C3AED]/20 group-hover:shadow-[0_0_20px_rgba(124,58,237,0.2)]"
-          }`}
-        >
-          <Icon
-            size={20}
-            className={isGold ? "text-[#C9A84C]" : "text-[#A78BFA]"}
-          />
+        <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 bg-[#C9A84C]/10 group-hover:bg-[#C9A84C]/20 group-hover:shadow-[0_0_20px_rgba(201,168,76,0.2)]">
+          <Icon size={20} className="text-[#C9A84C]" />
         </div>
-
-        <h3 className="font-display font-bold text-base text-white mb-3 group-hover:text-white transition-colors leading-snug">
+        <h3 className="font-display font-bold text-base text-white mb-3 leading-snug">
           {service.title}
         </h3>
-        <p className="text-white/45 text-sm leading-relaxed group-hover:text-white/60 transition-colors">
+        <p className="text-white/55 text-sm leading-relaxed group-hover:text-white/70 transition-colors">
           {service.description}
         </p>
       </div>
@@ -151,60 +131,67 @@ function ServiceCard({
 }
 
 export default function Services() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [active, setActive] = useState(0);
 
   return (
-    <section id="services" className="relative py-32 bg-[#0D0D0D] overflow-hidden">
-      {/* Background */}
+    <section id="services" className="relative py-28 md:py-32 bg-[#0B0B0D] overflow-hidden">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#C9A84C]/4 blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#7C3AED]/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
-        <div ref={ref} className="text-center mb-16">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-xs font-semibold tracking-[0.2em] uppercase text-[#C9A84C] block mb-4"
-          >
-            What We Do
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5"
-          >
-            Services Built for{" "}
-            <span className="text-gold-gradient">Arabic Web3</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white/45 text-lg max-w-xl mx-auto leading-relaxed"
-          >
-            Every service is designed specifically for the MENA Web3 landscape —
-            culturally aware, strategically sharp, and results-driven.
-          </motion.p>
+        <div className="text-center mb-12">
+          <Reveal>
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold block mb-4">
+              What We Do
+            </span>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
+              Services Built for <span className="text-gold-gradient">Arabic Web3</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p className="text-white/65 text-lg max-w-xl mx-auto leading-relaxed">
+              Every service is designed specifically for the MENA Web3 landscape —
+              culturally aware, strategically sharp, and results-driven.
+            </p>
+          </Reveal>
         </div>
+
+        {/* Category tabs */}
+        <Reveal delay={0.25}>
+          <div
+            role="tablist"
+            aria-label="Service categories"
+            className="flex flex-wrap justify-center gap-2 mb-10"
+          >
+            {categories.map((cat, i) => (
+              <button
+                key={cat.label}
+                role="tab"
+                aria-selected={active === i}
+                onClick={() => setActive(i)}
+                className={`px-5 py-2.5 rounded-full text-sm font-medium tracking-wide transition-all duration-300 ${
+                  active === i
+                    ? "bg-gradient-to-r from-[#C9A84C] to-[#E2C97E] text-black shadow-[0_0_20px_rgba(201,168,76,0.25)]"
+                    : "glass text-white/60 hover:text-white"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </Reveal>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-          {services.slice(0, 5).map((s, i) => (
-            <ServiceCard key={s.title} service={s} index={i} />
-          ))}
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mt-4">
-          {services.slice(5, 10).map((s, i) => (
-            <ServiceCard key={s.title} service={s} index={i} />
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 min-h-[220px]">
+          <AnimatePresence mode="wait">
+            {categories[active].services.map((s, i) => (
+              <ServiceCard key={`${active}-${s.title}`} service={s} index={i} />
+            ))}
+          </AnimatePresence>
         </div>
       </div>
-
-      <div className="section-divider mt-32" />
     </section>
   );
 }

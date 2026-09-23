@@ -70,7 +70,7 @@ export default function Testimonials() {
   const next = () => setCurrent((c) => (c + 1) % testimonials.length);
 
   return (
-    <section id="testimonials" className="relative py-32 bg-[#0D0D0D] overflow-hidden">
+    <section id="testimonials" className="relative py-28 md:py-32 bg-[#0B0B0D] overflow-hidden">
       {/* Background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#7C3AED]/5 blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-[#C9A84C]/4 blur-[120px] pointer-events-none" />
@@ -99,7 +99,7 @@ export default function Testimonials() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white/45 text-lg max-w-xl mx-auto leading-relaxed"
+            className="text-white/65 text-lg max-w-xl mx-auto leading-relaxed"
           >
             Founders, community leads, and ecosystem teams who've experienced
             the SO&apos;s Journal difference firsthand.
@@ -113,7 +113,7 @@ export default function Testimonials() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mb-8"
         >
-          <div className="relative rounded-3xl p-10 md:p-14 bg-[#141414] border border-white/5 overflow-hidden">
+          <div className="relative rounded-3xl p-10 md:p-14 bg-[#141416] border border-white/5 overflow-hidden">
             {/* Decorative quote icon */}
             <div className="absolute top-8 right-8 opacity-5">
               <Quote size={100} className="text-[#C9A84C]" />
@@ -155,7 +155,7 @@ export default function Testimonials() {
                     <div className="text-white font-semibold text-base">
                       {testimonials[current].name}
                     </div>
-                    <div className="text-white/40 text-sm">
+                    <div className="text-white/60 text-sm">
                       {testimonials[current].role} · {testimonials[current].company}
                     </div>
                   </div>
@@ -172,10 +172,12 @@ export default function Testimonials() {
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
+                  aria-label={`Show testimonial ${i + 1} of ${testimonials.length}`}
+                  aria-current={i === current}
                   className={`rounded-full transition-all duration-300 ${
                     i === current
                       ? "w-6 h-1.5 bg-[#C9A84C]"
-                      : "w-1.5 h-1.5 bg-white/20 hover:bg-white/40"
+                      : "w-1.5 h-1.5 bg-white/25 hover:bg-white/45"
                   }`}
                 />
               ))}
@@ -184,12 +186,14 @@ export default function Testimonials() {
             <div className="flex gap-2">
               <button
                 onClick={prev}
-                className="w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/20 transition-all"
+                aria-label="Previous testimonial"
+                className="w-10 h-10 rounded-xl glass flex items-center justify-center text-white/60 hover:text-white hover:border-white/20 transition-all"
               >
                 <ChevronLeft size={18} />
               </button>
               <button
                 onClick={next}
+                aria-label="Next testimonial"
                 className="w-10 h-10 rounded-xl bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center text-[#C9A84C] hover:bg-[#C9A84C]/20 transition-all"
               >
                 <ChevronRight size={18} />
@@ -201,16 +205,19 @@ export default function Testimonials() {
         {/* Mini testimonial grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {testimonials.slice(0, 3).map((t, i) => (
-            <motion.div
+            <motion.button
               key={t.name}
+              type="button"
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
               onClick={() => setCurrent(i)}
-              className={`rounded-2xl p-6 border cursor-pointer transition-all duration-300 ${
+              aria-label={`Show testimonial from ${t.name}`}
+              aria-current={current === i}
+              className={`text-left rounded-2xl p-6 border cursor-pointer transition-all duration-300 ${
                 current === i
-                  ? "bg-[#1A1A1A] border-[#C9A84C]/30"
-                  : "bg-[#141414] border-white/5 hover:border-white/10"
+                  ? "bg-[#1A1A1D] border-[#C9A84C]/30"
+                  : "bg-[#141416] border-white/5 hover:border-white/10"
               }`}
             >
               <div className="flex items-center gap-3 mb-3">
@@ -221,16 +228,14 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <div className="text-white text-sm font-semibold">{t.name}</div>
-                  <div className="text-white/35 text-xs">{t.role}</div>
+                  <div className="text-white/50 text-xs">{t.role}</div>
                 </div>
               </div>
-              <p className="text-white/45 text-xs leading-relaxed line-clamp-3">{t.text}</p>
-            </motion.div>
+              <p className="text-white/60 text-xs leading-relaxed line-clamp-3">{t.text}</p>
+            </motion.button>
           ))}
         </div>
       </div>
-
-      <div className="section-divider mt-32" />
     </section>
   );
 }

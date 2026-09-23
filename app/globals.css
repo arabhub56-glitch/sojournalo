@@ -21,11 +21,11 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 88px;
 }
 
 body {
-  background-color: #0D0D0D;
+  background-color: #0B0B0D;
   color: #F5F5F5;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
@@ -38,7 +38,7 @@ body {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #0D0D0D;
+  background: #0B0B0D;
 }
 ::-webkit-scrollbar-thumb {
   background: #C9A84C;
@@ -50,23 +50,30 @@ body {
 
 /* Selection */
 ::selection {
-  background: rgba(201, 168, 76, 0.2);
+  background: rgba(201, 168, 76, 0.25);
   color: #E2C97E;
+}
+
+/* Keyboard focus — visible everywhere, invisible for mouse users */
+:focus-visible {
+  outline: 2px solid #C9A84C;
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 /* Glass effect utility */
 .glass {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-gold {
-  background: rgba(201, 168, 76, 0.05);
+  background: rgba(201, 168, 76, 0.06);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(201, 168, 76, 0.15);
+  border: 1px solid rgba(201, 168, 76, 0.18);
 }
 
 /* Gold text gradient */
@@ -117,5 +124,17 @@ body {
 @layer utilities {
   .font-display {
     font-family: 'Syne', system-ui, sans-serif;
+  }
+}
+
+/* Respect reduced-motion preference: strip decorative motion, keep content reachable */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }

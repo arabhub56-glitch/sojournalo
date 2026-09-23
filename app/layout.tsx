@@ -15,6 +15,17 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "SO's Journal",
+  description:
+    "Arabic Web3 marketing agency helping brands expand across the MENA region through localized marketing, community growth, and culturally-native communication.",
+  areaServed: "MENA",
+  knowsLanguage: ["ar", "en"],
+  sameAs: ["https://twitter.com/sosjournal", "https://t.me/sosjournal"],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,8 +40,12 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
-      <body className="bg-[#0D0D0D] text-white antialiased overflow-x-hidden">
+      <body className="bg-[#0B0B0D] text-white antialiased overflow-x-hidden">
         {children}
       </body>
     </html>

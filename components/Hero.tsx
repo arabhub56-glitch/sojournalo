@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 function Particles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
+    if (reduceMotion) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -61,11 +64,14 @@ function Particles() {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [reduceMotion]);
+
+  if (reduceMotion) return null;
 
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       className="absolute inset-0 pointer-events-none z-0"
     />
   );
@@ -73,28 +79,32 @@ function Particles() {
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.12 } },
 };
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
 };
 
+const stats = [
+  { value: "600M+", label: "Arabic speakers reachable" },
+  { value: "MENA", label: "Fastest-growing Web3 region" },
+  { value: "24/7", label: "Native community coverage" },
+];
+
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0D0D0D]">
+    <section className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-[#0B0B0D] pt-28 pb-16">
       {/* Ambient background glows */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Violet glow top-left */}
         <div className="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] rounded-full bg-[#7C3AED]/10 blur-[120px]" />
-        {/* Gold glow right */}
         <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-[#C9A84C]/8 blur-[120px]" />
-        {/* Center faint glow */}
         <div className="absolute bottom-[-5%] left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-[#7C3AED]/5 blur-[100px]" />
       </div>
 
       {/* Animated grid overlay */}
       <div
+        aria-hidden="true"
         className="absolute inset-0 z-0 opacity-[0.03]"
         style={{
           backgroundImage:
@@ -114,9 +124,9 @@ export default function Hero() {
       >
         {/* Badge */}
         <motion.div variants={fadeUp} className="flex justify-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-gold border border-[#C9A84C]/20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-gold">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] animate-pulse" />
-            <span className="text-[#C9A84C] text-xs font-semibold tracking-[0.15em] uppercase">
+            <span className="text-[#E2C97E] text-xs font-semibold tracking-[0.15em] uppercase">
               Arabic Web3 Marketing Agency
             </span>
           </div>
@@ -137,12 +147,12 @@ export default function Hero() {
         {/* Subheadline */}
         <motion.p
           variants={fadeUp}
-          className="text-white/50 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10"
+          className="text-white/70 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10"
         >
           SO&apos;s Journal helps Web3 brands expand across the{" "}
-          <span className="text-white/80">MENA region</span> through localized
+          <span className="text-white font-medium">MENA region</span> through localized
           marketing, community growth, strategic content, and{" "}
-          <span className="text-white/80">culturally-native communication.</span>
+          <span className="text-white font-medium">culturally-native communication.</span>
         </motion.p>
 
         {/* CTA Buttons */}
@@ -154,31 +164,41 @@ export default function Hero() {
             href="#contact"
             whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(201,168,76,0.4)" }}
             whileTap={{ scale: 0.97 }}
-            className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#C9A84C] to-[#E2C97E] text-black font-bold text-base shadow-[0_0_25px_rgba(201,168,76,0.25)] transition-all duration-300 w-full sm:w-auto"
+            className="group px-8 py-4 rounded-xl bg-gradient-to-r from-[#C9A84C] to-[#E2C97E] text-black font-bold text-base shadow-[0_0_25px_rgba(201,168,76,0.25)] transition-all duration-300 w-full sm:w-auto inline-flex items-center justify-center gap-2"
           >
             Book a Call
+            <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
           </motion.a>
           <motion.a
             href="#services"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="px-8 py-4 rounded-xl glass border border-white/10 text-white/80 hover:text-white font-semibold text-base transition-all duration-300 w-full sm:w-auto"
+            className="px-8 py-4 rounded-xl glass text-white/85 hover:text-white font-semibold text-base transition-all duration-300 w-full sm:w-auto"
           >
             View Services
           </motion.a>
         </motion.div>
 
-        {/* Scroll hint */}
+        {/* Trust stat strip */}
         <motion.div
           variants={fadeUp}
-          className="mt-20 flex flex-col items-center gap-2 opacity-40"
+          className="mt-16 flex items-center justify-center gap-6 sm:gap-12 flex-wrap"
         >
-          <span className="text-xs tracking-[0.2em] uppercase text-white/40">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-8 bg-gradient-to-b from-white/30 to-transparent"
-          />
+          {stats.map((stat, i) => (
+            <div key={stat.label} className="flex items-center gap-6 sm:gap-12">
+              <div className="text-center">
+                <div className="font-display text-xl sm:text-2xl font-bold text-gold-gradient leading-none mb-1">
+                  {stat.value}
+                </div>
+                <div className="text-white/45 text-xs tracking-wide whitespace-nowrap">
+                  {stat.label}
+                </div>
+              </div>
+              {i < stats.length - 1 && (
+                <div className="hidden sm:block w-px h-8 bg-white/10" aria-hidden="true" />
+              )}
+            </div>
+          ))}
         </motion.div>
       </motion.div>
 

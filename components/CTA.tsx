@@ -9,7 +9,7 @@ export default function CTA() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="contact" className="relative py-32 bg-[#0D0D0D] overflow-hidden">
+    <section className="relative py-28 md:py-32 bg-[#0B0B0D] overflow-hidden">
       {/* Cinematic background glows */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Large violet center bloom */}
@@ -88,7 +88,7 @@ export default function CTA() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <motion.a
-            href="mailto:contact@sosjournal.com"
+            href="#contact"
             whileHover={{
               scale: 1.05,
               boxShadow: "0 0 60px rgba(201,168,76,0.45), 0 0 120px rgba(201,168,76,0.2)",
@@ -122,7 +122,7 @@ export default function CTA() {
           ].map((item) => (
             <div key={item} className="flex items-center gap-2">
               <div className="w-1 h-1 rounded-full bg-[#C9A84C]" />
-              <span className="text-white/35 text-sm">{item}</span>
+              <span className="text-white/55 text-sm">{item}</span>
             </div>
           ))}
         </motion.div>

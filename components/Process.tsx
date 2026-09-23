@@ -92,7 +92,7 @@ function StepItem({
             <h3 className="font-display text-2xl font-bold text-white mb-3">
               {step.title}
             </h3>
-            <p className="text-white/50 text-sm leading-relaxed mb-4">
+            <p className="text-white/65 text-sm leading-relaxed mb-4">
               {step.description}
             </p>
             <div
@@ -119,7 +119,7 @@ function StepItem({
           transition={{ duration: 0.5, delay: 0.2 }}
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
         >
-          <div className="w-14 h-14 rounded-2xl bg-[#141414] border border-[#C9A84C]/30 flex items-center justify-center shadow-[0_0_30px_rgba(201,168,76,0.15)]">
+          <div className="w-14 h-14 rounded-2xl bg-[#141416] border border-[#C9A84C]/30 flex items-center justify-center shadow-[0_0_30px_rgba(201,168,76,0.15)]">
             <Icon size={22} className="text-[#C9A84C]" />
           </div>
         </motion.div>
@@ -133,7 +133,7 @@ function StepItem({
         className="lg:hidden flex gap-5"
       >
         <div className="flex flex-col items-center">
-          <div className="w-11 h-11 rounded-xl bg-[#141414] border border-[#C9A84C]/30 flex items-center justify-center flex-shrink-0 shadow-[0_0_20px_rgba(201,168,76,0.1)]">
+          <div className="w-11 h-11 rounded-xl bg-[#141416] border border-[#C9A84C]/30 flex items-center justify-center flex-shrink-0 shadow-[0_0_20px_rgba(201,168,76,0.1)]">
             <Icon size={18} className="text-[#C9A84C]" />
           </div>
           {index < total - 1 && (
@@ -147,7 +147,7 @@ function StepItem({
           <h3 className="font-display text-xl font-bold text-white mb-3">
             {step.title}
           </h3>
-          <p className="text-white/50 text-sm leading-relaxed mb-4">
+          <p className="text-white/65 text-sm leading-relaxed mb-4">
             {step.description}
           </p>
           <div className="flex flex-wrap gap-2">
@@ -171,7 +171,7 @@ export default function Process() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="process" className="relative py-32 bg-[#0D0D0D] overflow-hidden">
+    <section id="process" className="relative py-28 md:py-32 bg-[#0B0B0D] overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-0 w-[400px] h-[600px] bg-[#7C3AED]/4 blur-[150px]" />
         <div className="absolute bottom-1/4 left-0 w-[300px] h-[400px] bg-[#C9A84C]/3 blur-[120px]" />
@@ -201,7 +201,7 @@ export default function Process() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white/45 text-lg max-w-xl mx-auto leading-relaxed"
+            className="text-white/65 text-lg max-w-xl mx-auto leading-relaxed"
           >
             Five strategic phases that take your project from unknown to iconic
             in the Arabic Web3 space.
@@ -221,7 +221,6 @@ export default function Process() {
         </div>
       </div>
 
-      <div className="section-divider mt-32" />
     </section>
   );
 }
