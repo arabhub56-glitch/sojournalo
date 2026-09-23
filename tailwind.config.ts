@@ -9,54 +9,58 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        gold: {
-          DEFAULT: "#C9A84C",
-          light: "#E2C97E",
-          dark: "#A07830",
+        paper: {
+          DEFAULT: "#F6F1E7",
+          deep: "#EEE6D3",
+          card: "#FCFAF4",
+          line: "#E3D8BE",
         },
-        violet: {
-          glow: "#7C3AED",
-          soft: "#A78BFA",
+        ink: {
+          DEFAULT: "#15212F",
+          soft: "#2C3D50",
+          muted: "#55677A",
         },
-        charcoal: {
-          DEFAULT: "#0B0B0D",
-          soft: "#141416",
-          mid: "#1A1A1D",
-          raised: "#1F1F23",
-          border: "#26262A",
+        teal: {
+          DEFAULT: "#259C93",
+          light: "#5FCFC3",
+          pale: "#D8EFEA",
+          deep: "#166E67",
+        },
+        indigo: {
+          DEFAULT: "#3B4A6B",
+          soft: "#5A6A93",
+        },
+        navy: {
+          DEFAULT: "#101A28",
+          soft: "#182233",
+          border: "#243347",
         },
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-syne)", "system-ui", "sans-serif"],
+        display: ["var(--font-fraunces)", "Georgia", "serif"],
       },
       backgroundImage: {
-        "gold-gradient": "linear-gradient(135deg, #C9A84C 0%, #E2C97E 50%, #A07830 100%)",
-        "violet-gradient": "linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%)",
-        "dark-gradient": "linear-gradient(180deg, #0B0B0D 0%, #141416 100%)",
+        "brand-gradient": "linear-gradient(135deg, #15212F 0%, #259C93 100%)",
+        "teal-gradient": "linear-gradient(135deg, #259C93 0%, #5FCFC3 100%)",
       },
       maxWidth: {
         "8xl": "90rem",
       },
       animation: {
-        float: "float 6s ease-in-out infinite",
+        float: "float 7s ease-in-out infinite",
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        glow: "glow 3s ease-in-out infinite",
-        "spin-slow": "spin 20s linear infinite",
-        marquee: "marquee 28s linear infinite",
+        "spin-slow": "spin 40s linear infinite",
+        twinkle: "twinkle 3.5s ease-in-out infinite",
       },
       keyframes: {
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-20px)" },
+          "50%": { transform: "translateY(-16px)" },
         },
-        glow: {
-          "0%, 100%": { opacity: "0.5" },
-          "50%": { opacity: "1" },
-        },
-        marquee: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
+        twinkle: {
+          "0%, 100%": { opacity: "0.35", transform: "scale(0.9)" },
+          "50%": { opacity: "1", transform: "scale(1.1)" },
         },
       },
       backdropBlur: {

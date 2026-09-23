@@ -78,7 +78,6 @@ function StepItem({
     <div ref={ref} className="relative">
       {/* Desktop: alternating layout */}
       <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16 items-center min-h-[180px]">
-        {/* Content — left for even, right for odd */}
         <motion.div
           initial={{ opacity: 0, x: isEven ? -50 : 50 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -86,13 +85,13 @@ function StepItem({
           className={isEven ? "text-right col-start-1" : "text-left col-start-2"}
         >
           <div className={`${isEven ? "ml-auto" : "mr-auto"} max-w-md`}>
-            <span className="font-display text-5xl font-bold text-[#C9A84C]/10 block mb-2">
+            <span className="font-display text-5xl font-semibold text-ink/8 block mb-2">
               {step.number}
             </span>
-            <h3 className="font-display text-2xl font-bold text-white mb-3">
+            <h3 className="font-display text-2xl font-semibold text-ink mb-3">
               {step.title}
             </h3>
-            <p className="text-white/65 text-sm leading-relaxed mb-4">
+            <p className="text-ink/65 text-sm leading-relaxed mb-4">
               {step.description}
             </p>
             <div
@@ -103,7 +102,7 @@ function StepItem({
               {step.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 rounded-full text-xs bg-[#C9A84C]/10 text-[#C9A84C] border border-[#C9A84C]/20 font-medium"
+                  className="px-3 py-1 rounded-full text-xs bg-teal/10 text-teal-deep border border-teal/20 font-medium"
                 >
                   {tag}
                 </span>
@@ -112,15 +111,14 @@ function StepItem({
           </div>
         </motion.div>
 
-        {/* Center node — positioned absolutely over the center line */}
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
         >
-          <div className="w-14 h-14 rounded-2xl bg-[#141416] border border-[#C9A84C]/30 flex items-center justify-center shadow-[0_0_30px_rgba(201,168,76,0.15)]">
-            <Icon size={22} className="text-[#C9A84C]" />
+          <div className="w-14 h-14 rounded-2xl bg-paper-card border border-teal/30 flex items-center justify-center shadow-[0_6px_24px_rgba(21,33,47,0.1)]">
+            <Icon size={22} className="text-teal-deep" />
           </div>
         </motion.div>
       </div>
@@ -133,28 +131,28 @@ function StepItem({
         className="lg:hidden flex gap-5"
       >
         <div className="flex flex-col items-center">
-          <div className="w-11 h-11 rounded-xl bg-[#141416] border border-[#C9A84C]/30 flex items-center justify-center flex-shrink-0 shadow-[0_0_20px_rgba(201,168,76,0.1)]">
-            <Icon size={18} className="text-[#C9A84C]" />
+          <div className="w-11 h-11 rounded-xl bg-paper-card border border-teal/30 flex items-center justify-center flex-shrink-0 shadow-[0_4px_16px_rgba(21,33,47,0.08)]">
+            <Icon size={18} className="text-teal-deep" />
           </div>
           {index < total - 1 && (
-            <div className="w-px flex-1 mt-3 bg-gradient-to-b from-[#C9A84C]/20 to-transparent min-h-[40px]" />
+            <div className="w-px flex-1 mt-3 bg-gradient-to-b from-ink/15 to-transparent min-h-[40px]" />
           )}
         </div>
         <div className="pb-8">
-          <span className="font-display text-3xl font-bold text-[#C9A84C]/15 block -mt-1 mb-1">
+          <span className="font-display text-3xl font-semibold text-ink/12 block -mt-1 mb-1">
             {step.number}
           </span>
-          <h3 className="font-display text-xl font-bold text-white mb-3">
+          <h3 className="font-display text-xl font-semibold text-ink mb-3">
             {step.title}
           </h3>
-          <p className="text-white/65 text-sm leading-relaxed mb-4">
+          <p className="text-ink/65 text-sm leading-relaxed mb-4">
             {step.description}
           </p>
           <div className="flex flex-wrap gap-2">
             {step.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 rounded-full text-xs bg-[#C9A84C]/10 text-[#C9A84C] border border-[#C9A84C]/20 font-medium"
+                className="px-3 py-1 rounded-full text-xs bg-teal/10 text-teal-deep border border-teal/20 font-medium"
               >
                 {tag}
               </span>
@@ -171,20 +169,19 @@ export default function Process() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="process" className="relative py-28 md:py-32 bg-[#0B0B0D] overflow-hidden">
+    <section id="process" className="relative py-28 md:py-32 bg-paper-deep overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 right-0 w-[400px] h-[600px] bg-[#7C3AED]/4 blur-[150px]" />
-        <div className="absolute bottom-1/4 left-0 w-[300px] h-[400px] bg-[#C9A84C]/3 blur-[120px]" />
+        <div className="absolute top-1/4 right-0 w-[400px] h-[600px] bg-indigo/6 blur-[150px]" />
+        <div className="absolute bottom-1/4 left-0 w-[300px] h-[400px] bg-teal/5 blur-[120px]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
         <div ref={ref} className="text-center mb-20">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-xs font-semibold tracking-[0.2em] uppercase text-[#C9A84C] block mb-4"
+            className="text-xs font-semibold tracking-[0.2em] uppercase text-teal-deep block mb-4"
           >
             How We Work
           </motion.span>
@@ -192,26 +189,24 @@ export default function Process() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5"
+            className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-ink leading-tight mb-5"
           >
             A Process Built to{" "}
-            <span className="text-gold-gradient">Win in MENA</span>
+            <span className="italic text-brand-gradient">Win in MENA</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white/65 text-lg max-w-xl mx-auto leading-relaxed"
+            className="text-ink/65 text-lg max-w-xl mx-auto leading-relaxed"
           >
             Five strategic phases that take your project from unknown to iconic
             in the Arabic Web3 space.
           </motion.p>
         </div>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Vertical center line — desktop only */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#C9A84C]/20 to-transparent -translate-x-1/2" />
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-ink/15 to-transparent -translate-x-1/2" />
 
           <div className="space-y-16">
             {steps.map((step, i) => (
@@ -220,7 +215,6 @@ export default function Process() {
           </div>
         </div>
       </div>
-
     </section>
   );
 }

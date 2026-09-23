@@ -52,14 +52,14 @@ function FAQItem({
   const panelId = useId();
 
   return (
-    <div className="border-b border-white/8">
+    <div className="border-b border-ink/10">
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
         aria-controls={panelId}
         className="w-full flex items-center justify-between gap-4 py-6 text-left group"
       >
-        <span className="font-display font-semibold text-base sm:text-lg text-white group-hover:text-[#E2C97E] transition-colors">
+        <span className="font-display font-semibold text-base sm:text-lg text-ink group-hover:text-teal-deep transition-colors">
           {question}
         </span>
         <span
@@ -67,7 +67,7 @@ function FAQItem({
             isOpen ? "rotate-45" : ""
           }`}
         >
-          <Plus size={16} className="text-[#C9A84C]" />
+          <Plus size={16} className="text-teal-deep" />
         </span>
       </button>
       <AnimatePresence initial={false}>
@@ -81,7 +81,7 @@ function FAQItem({
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <p className="text-white/65 text-sm leading-relaxed pb-6 pr-12">
+            <p className="text-ink/65 text-sm leading-relaxed pb-6 pr-12">
               {answer}
             </p>
           </motion.div>
@@ -95,25 +95,25 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative py-28 md:py-32 bg-[#0B0B0D] overflow-hidden">
-      <div className="absolute bottom-0 left-1/4 w-[500px] h-[400px] rounded-full bg-[#7C3AED]/5 blur-[140px] pointer-events-none" />
+    <section id="faq" className="relative py-28 md:py-32 bg-paper overflow-hidden">
+      <div className="absolute bottom-0 left-1/4 w-[500px] h-[400px] rounded-full bg-indigo/6 blur-[140px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-14">
           <Reveal>
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold block mb-4">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-teal-deep block mb-4">
               Common Questions
             </span>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
-              Frequently Asked <span className="text-gold-gradient">Questions</span>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold text-ink leading-tight mb-5">
+              Frequently Asked <span className="italic text-brand-gradient">Questions</span>
             </h2>
           </Reveal>
         </div>
 
         <Reveal delay={0.15}>
-          <div className="rounded-2xl bg-[#141416] border border-white/5 px-6 sm:px-8">
+          <div className="rounded-2xl bg-paper-card border border-ink/8 px-6 sm:px-8">
             {faqs.map((faq, i) => (
               <FAQItem
                 key={faq.question}

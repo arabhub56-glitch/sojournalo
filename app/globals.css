@@ -2,15 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;0,900;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
   --font-inter: 'Inter', sans-serif;
-  --font-syne: 'Syne', sans-serif;
-  --gold: #C9A84C;
-  --gold-light: #E2C97E;
-  --violet: #7C3AED;
-  --violet-soft: #A78BFA;
+  --font-fraunces: 'Fraunces', Georgia, serif;
+  --paper: #F6F1E7;
+  --ink: #15212F;
+  --teal: #259C93;
+  --indigo: #3B4A6B;
+  --navy: #101A28;
 }
 
 * {
@@ -25,8 +26,8 @@ html {
 }
 
 body {
-  background-color: #0B0B0D;
-  color: #F5F5F5;
+  background-color: #F6F1E7;
+  color: #15212F;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -38,96 +39,99 @@ body {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B0B0D;
+  background: #F6F1E7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C9A84C;
+  background: #259C93;
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E2C97E;
+  background: #166E67;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(201, 168, 76, 0.25);
-  color: #E2C97E;
+  background: rgba(37, 156, 147, 0.22);
+  color: #15212F;
 }
 
-/* Keyboard focus — visible everywhere, invisible for mouse users */
+/* Keyboard focus */
 :focus-visible {
-  outline: 2px solid #C9A84C;
+  outline: 2px solid #259C93;
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-/* Glass effect utility */
+/* Glass panel — light (default, for cream sections) */
 .glass {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(21, 33, 47, 0.03);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(21, 33, 47, 0.09);
 }
 
-.glass-gold {
-  background: rgba(201, 168, 76, 0.06);
+.glass-teal {
+  background: rgba(37, 156, 147, 0.07);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(201, 168, 76, 0.18);
+  border: 1px solid rgba(37, 156, 147, 0.22);
 }
 
-/* Gold text gradient */
-.text-gold-gradient {
-  background: linear-gradient(135deg, #C9A84C 0%, #E2C97E 50%, #C9A84C 100%);
+/* Glass panel — dark (for navy bookend sections) */
+.glass-dark {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Brand gradient text (ink -> teal), for hero-level emphasis */
+.text-brand-gradient {
+  background: linear-gradient(120deg, #15212F 0%, #259C93 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Violet text gradient */
-.text-violet-gradient {
-  background: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
+.text-teal-gradient {
+  background: linear-gradient(120deg, #259C93 0%, #5FCFC3 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Glow utilities */
-.glow-gold {
-  box-shadow: 0 0 30px rgba(201, 168, 76, 0.15), 0 0 60px rgba(201, 168, 76, 0.05);
+.glow-teal {
+  box-shadow: 0 0 30px rgba(37, 156, 147, 0.18), 0 0 60px rgba(37, 156, 147, 0.08);
 }
 
-.glow-violet {
-  box-shadow: 0 0 30px rgba(124, 58, 237, 0.2), 0 0 60px rgba(124, 58, 237, 0.08);
-}
-
-.text-glow-gold {
-  text-shadow: 0 0 20px rgba(201, 168, 76, 0.4), 0 0 40px rgba(201, 168, 76, 0.2);
-}
-
-/* Section divider */
+/* Section divider — hairline ink rule instead of neon line */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(21, 33, 47, 0.14), transparent);
 }
 
-/* Noise texture overlay */
-.noise-overlay::after {
+.section-divider-dark {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+}
+
+/* Paper grain texture overlay — subtle, evokes the watercolor/ink paper of the brand mark */
+.paper-grain::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  mix-blend-mode: multiply;
   pointer-events: none;
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Syne', system-ui, sans-serif;
+    font-family: 'Fraunces', Georgia, serif;
   }
 }
 
-/* Respect reduced-motion preference: strip decorative motion, keep content reachable */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
